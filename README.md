@@ -1,6 +1,8 @@
 
 # Dark Crystal Protocol Specification (WIP)
 
+![dark crystal icon](./assets/dark-crystal-icon_200x200.png)
+
 ## Introduction
 
 ## Terms used
