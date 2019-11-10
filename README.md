@@ -27,17 +27,23 @@ This document is describes a social key backup and recovery technique, to enable
 
 ### Step 1 - Combine secret with contextual metadata
 
+![secret and label](./assets/dc_secret_label.png)
+
 This is to indicate the intended purpose of the secret, meaning that it is still useful if recovered 'out of context'. This will generally include a 'label' property which will be a human readable description, including, for example, the name of the application it is useful for. This may also include application-specific data. This is because, as Pamela Morgan makes clear in her book 'Cryptoasset inheritance planning', recovering a key is only half the story.  For it be useful, we need to know what to do with it.
 
 The amount of information included here depends on how critical it is that share size is kept small.
 
 ### Step 2 - Encrypt data with symmetric key
 
+![secret and label with key](./assets/dc_secret_label2.png)
+
 If the data to be backed up is larger than *maxbytes* bytes, the data is encrypted with a symmetric key and this key is taken to be the secret. Otherwise, the data itself is taken to be the secret. It needs to be noted that many implementations of secret sharing do this internally, and produce shares which are a concatonation of a key-share and the encrypted secret.
 
 This means there is some duplication of data - a portion of each share is identical to the others. So in the case of particularly large secrets, it makes sense if the encrypted secret is stored only once in a place which is accessible to all share-holders (if the practicalities of the chosen transport layer make this possible).
 
 ### Step 3 - Message Authentication Code added
+
+![secret label key mac](./assets/dc_secret_label3.png)
 
 The secret is appended with it’s SHA-256 hash which serves as a message authentication code (MAC). This allows us to later verify that the secret has been correctly recovered.
 
