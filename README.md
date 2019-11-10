@@ -51,6 +51,8 @@ It is assumed that in step 2, the symmetric encryption algorithm used will also 
 
 ### Step 4 - Shards generated
 
+![shards](./assets/dc_shards1.png)
+
 Shards are generated using a secure threshold-based secret sharing algorithm. 
 
 ***TODO:*** link out to more information about Shamir's secret sharing and polynomial interpolation, for those interested
@@ -65,6 +67,8 @@ Shards are appended with these signatures.
 To ensure backward compatibility with future versions of the protocol.
 
 ### Step 7 - Signed shards encrypted for each custodian
+
+![shards](./assets/dc_shards2.png)
 
 Shards are encrypted with the public key of each custodian and represented as base64 strings. The unencrypted shards are removed from memory. 
 
