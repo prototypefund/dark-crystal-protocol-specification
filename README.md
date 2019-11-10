@@ -1,18 +1,27 @@
 
-# Dark Crystal Protocol Specification (WIP)
+# Dark Crystal Social Recovery Protocol Specification (WIP)
 
 ![dark crystal icon](./assets/dark-crystal-icon_200x200.png)
 
 ## Introduction
 
+Dark Crystal is a social key management system.  It is a set of protocols and recommendations for responsibly handling sensitive data such as secret keys. 
+The idea is that rather than creating a generalised piece of software for managing keys, key management techniques should be integrated into the applications which use the keys. So the techniques described and libraries provided can be seen as recommendations for developers wanting to improve key management for particular applications.  Of course, every situation is different and in many cases the protocols will need to be adapted for particular needs.
+
+This document is describes a social key backup and recovery technique, to enable lost keys to be recovered.  It must be emphasised that key recovery cannot solve the problem of compromised keys. It is appropriate only to recover encrypted data following loss of a key, or for continued use of a key when it is known to be lost but not compromised, for example following accidental deletion or hardware failure. 
+
 ## Terms used
 
-- ***Secret*** -
-- ***Secret-owner*** -
-- ***Shard*** - 
-- ***Custodian*** -
+- ***Secret*** - the data to be backed up and potentially recovered.
+- ***Secret-owner*** - the peer who initiates the backup.
+- ***Shard*** - a single encrypted share of the secret. 
+- ***Custodian*** - a peer who holds a shard, generally a friend or trusted contact of the secret owner.
 
 ## Scenarios
+
+- 'swim' - key loss
+- 'theft' - key compromise
+- 'inheritance' - following death or incapacitation a key can be recovered by heirs.
 
 ## Setup process
 
@@ -38,6 +47,8 @@ It is assumed that in step 2, the symmetric encryption algorithm used will also 
 
 Shards are generated using a secure threshold-based secret sharing algorithm. 
 
+***TODO:*** link out to more information about Shamir's secret sharing and polynomial interpolation, for those interested
+
 ### Step 5 - Shards are signed
 
 Each shard is signed by the owner of the secret using a keypair with an established public key (such as the same keypair used to sign other messages in the application). 
@@ -59,9 +70,28 @@ TODO: explain process of keeping a personal copy with serves as a reference that
 
 ## Recovery process
 
-TODO: 
-* Upon loss of data, the secret owner establishes a new account. 
-* They contact the custodians out of band to confirm that the new identity belongs to them. 
-* Each custodian sends the shard they were holding to the new account. 
-* The signatures are validated with the original public key, proving that the returned shards are identical to those sent out. 
-* The shards are combined to recover the secret, and the MAC is used to establish that recovery was successful. 
+TODO - add detail to this section
+
+### Step 1 - New identity
+
+Upon loss of data, the secret owner establishes a new account, giving them a new identity on the system. 
+
+### Step 2 - Contact custodians
+
+The secret owner contacts the custodians 'out of band' to confirm that the new identity belongs to them. Due to the threshold nature of the scheme there is a degree of tolerance to some custodians being unavailable or uncooperative.
+
+### Step 3 - Return shards
+
+Each custodian sends the shard they were holding to the new account. Ephemeral keypairs can be used to make it possible to later delete these shard messages.
+
+### Step 4 - Validate shards
+
+The signatures are validated with the original public key, proving that the returned shards are identical to those sent out. 
+
+### Step 5 - Secret recovery
+
+The shards are combined to recover the secret, and the MAC is used to establish that recovery was successful.
+
+### Step 6 - Recover old account
+
+Depending on whether the lost account might have been compromised, it may be appropriate to abandon the new identity and continue to use the old one. If this is not the case, the key can at least be used to recover data encrypted to it.
