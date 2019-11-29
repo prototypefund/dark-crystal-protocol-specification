@@ -106,6 +106,8 @@ Each custodian sends the shard they were holding to the new account. Ephemeral k
 - ***TODO:*** Explain more about ephemeral keys
 - ***TODO:*** Explain safeguarding against sending shards to the wrong account.  This is a hard problem.
 
+### Step 3 - Decrypt shards
+
 ### Step 4 - Validate shards
 
 ![validated shards](./assets/validated-shards-sm.png)
