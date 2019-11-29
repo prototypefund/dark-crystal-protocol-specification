@@ -6,6 +6,9 @@
 ## Introduction
 
 Dark Crystal is a social key management system.  It is a set of protocols and recommendations for responsibly handling sensitive data such as secret keys. 
+
+It is designed for safeguarding data which we don't want to loose, but which we don't want others to find. 
+
 The idea is that rather than creating a generalised piece of software for managing keys, key management techniques should be integrated into the applications which use the keys. So the techniques described and libraries provided can be seen as recommendations for developers wanting to improve key management for particular applications.  Of course, every situation is different and in many cases the protocols will need to be adapted for particular needs.
 
 This document is describes a social key backup and recovery technique, to enable lost keys to be recovered.  It must be emphasised that key recovery cannot solve the problem of compromised keys. It is appropriate only to recover encrypted data following loss of a key, or for continued use of a key when it is known to be lost but not compromised, for example following accidental deletion or hardware failure. 
@@ -17,11 +20,13 @@ This document is describes a social key backup and recovery technique, to enable
 - ***Shard*** - a single encrypted share of the secret. 
 - ***Custodian*** - a peer who holds a shard, generally a friend or trusted contact of the secret owner.
 
-## Scenarios
+## Key Loss Scenarios
 
-- 'swim' - key loss
-- 'theft' - key compromise
-- 'inheritance' - following death or incapacitation a key can be recovered by heirs.
+The process of recovering a key 
+
+- ***'swim'*** - key loss - eg: Computer fell into the sea and is lost forever.
+- ***'theft'*** - key compromise - eg: I forgot my computer on a train and no idea who might have it.
+- ***'inheritance'*** - following death or incapacitation, a key can be recovered by heirs.
 
 ## Setup process
 
@@ -95,6 +100,8 @@ The secret owner contacts the custodians 'out of band' to confirm that the new i
 Each custodian sends the shard they were holding to the new account. Ephemeral keypairs can be used to make it possible to later delete these shard messages.
 
 ### Step 4 - Validate shards
+
+![validated shards](./assets/validated-shards-sm.png)
 
 The signatures are validated with the original public key, proving that the returned shards are identical to those sent out. 
 
