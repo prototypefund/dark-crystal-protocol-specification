@@ -28,6 +28,10 @@ The process of recovering a key
 - ***'theft'*** - key compromise - eg: I forgot my computer on a train and no idea who might have it.
 - ***'inheritance'*** - following death or incapacitation, a key can be recovered by heirs.
 
+## Peer experience
+
+This is a technical specification of the protocol. Many stages of the process will be automated and not visible to the peers.  Interface recommendations and peer stories are described in a separate document.
+
 ## Setup process
 
 ### Step 1 - Combine secret with contextual metadata
@@ -85,19 +89,22 @@ Each encrypted shard is packed together with some metadata into a message, trans
 
 ## Recovery process
 
-***TODO*** - add detail to this section
-
 ### Step 1 - New identity
 
-Upon loss of data, the secret owner establishes a new account, giving them a new identity on the system. 
+Upon loss of data, the secret owner establishes a new account, giving them a new identity on the system. This step depends a lot on the transport mechanism used, but generally will involve generating a new keypair.
 
 ### Step 2 - Contact custodians
 
-The secret owner contacts the custodians 'out of band' to confirm that the new identity belongs to them. Due to the threshold nature of the scheme there is a degree of tolerance to some custodians being unavailable or uncooperative.
+The secret owner contacts the custodians 'out of band' to confirm that the new identity belongs to them. That is, it is assumed that there is the possibility of some personal contact to convince the custodians that the new identity is really the secret owner.  For example this might involve a phone call saying "hey, its me!".
+
+Due to the threshold nature of the scheme there is a degree of tolerance to some custodians being unavailable or uncooperative.
 
 ### Step 3 - Return shards
 
 Each custodian sends the shard they were holding to the new account. Ephemeral keypairs can be used to make it possible to later delete these shard messages.
+
+- ***TODO:*** Explain more about ephemeral keys
+- ***TODO:*** Explain safeguarding against sending shards to the wrong account.  This is a hard problem.
 
 ### Step 4 - Validate shards
 
@@ -118,6 +125,10 @@ The shards are combined to recover the secret.
 The MAC is used to establish that recovery was successful.  This means we can be sure the combining process worked as planned and offers some protection against tampering.
 
 ### Step 7 - Decrypt secret
+
+![secret and label](./assets/dc_secret_label.png)
+
+Finally the secret is restored, along with a descriptive label.
 
 ### Step 8 - Recover old account
 
