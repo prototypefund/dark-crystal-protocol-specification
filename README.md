@@ -109,8 +109,16 @@ The signatures are validated with the original public key, proving that the retu
 
 ![recovery](./assets/recovery-sm.png)
 
-The shards are combined to recover the secret, and the MAC is used to establish that recovery was successful.
+The shards are combined to recover the secret.
 
-### Step 6 - Recover old account
+### Step 6 - Validate secret
+
+![reovery successful](./assets/recover-success.png)
+
+The MAC is used to establish that recovery was successful.  This means we can be sure the combining process worked as planned and offers some protection against tampering.
+
+### Step 7 - Decrypt secret
+
+### Step 8 - Recover old account
 
 Depending on whether the lost account might have been compromised, it may be appropriate to abandon the new identity and continue to use the old one. If this is not the case, the key can at least be used to recover data encrypted to it.
