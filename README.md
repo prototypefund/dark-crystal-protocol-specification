@@ -101,18 +101,21 @@ Due to the threshold nature of the scheme there is a degree of tolerance to some
 
 ### Step 3 - Return shards
 
-Each custodian sends the shard they were holding to the new account. Ephemeral keypairs can be used to make it possible to later delete these shard messages.
+Each custodian decrypts the shard they are holding with their personal keypair, and re-encrypts it to the public key of the new account. It is then sent to the new account of the secret owner.
 
-- ***TODO:*** Explain more about ephemeral keys
+The nature peer to peer protocols make it difficult to delete data. If this is the case with the transport mechanism you are using, we recommend adding a second layer of encryption using an ephemeral keypair. This is a single-use keypair which can later be deleted to effectively delete these messages from the system.  This will be explained in more detail in a separate document.
+
 - ***TODO:*** Explain safeguarding against sending shards to the wrong account.  This is a hard problem.
 
 ### Step 3 - Decrypt shards
+
+The secret owner decrypts the shards they receive.
 
 ### Step 4 - Validate shards
 
 ![validated shards](./assets/validated-shards-sm.png)
 
-The signatures are validated with the original public key, proving that the returned shards are identical to those sent out. 
+The signature of each shard is validated with the original public key, proving that the returned shards are identical to those sent out. 
 
 ### Step 5 - Secret recovery
 
