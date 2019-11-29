@@ -113,7 +113,7 @@ The shards are combined to recover the secret.
 
 ### Step 6 - Validate secret
 
-![reovery successful](./assets/recover-success.png)
+![reovery successful](./assets/recover-success-sm.png)
 
 The MAC is used to establish that recovery was successful.  This means we can be sure the combining process worked as planned and offers some protection against tampering.
 
