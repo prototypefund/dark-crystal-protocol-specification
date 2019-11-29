@@ -107,6 +107,8 @@ The signatures are validated with the original public key, proving that the retu
 
 ### Step 5 - Secret recovery
 
+![recovery](./assets/recovery-sm.png)
+
 The shards are combined to recover the secret, and the MAC is used to establish that recovery was successful.
 
 ### Step 6 - Recover old account
