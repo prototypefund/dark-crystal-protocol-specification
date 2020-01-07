@@ -64,7 +64,7 @@ It is assumed that in step 2, the symmetric encryption algorithm used will also 
 
 Shards are generated using a secure threshold-based secret sharing algorithm. 
 
-If you are interested, here is an [explanation of secret sharing in very simple terms](./shamirs-secret-sharing)
+If you are interested, here is an [explanation of secret sharing in very simple terms](./shamirs-secret-sharing.md)
 
 ### Step 5 - Shards are signed
 
