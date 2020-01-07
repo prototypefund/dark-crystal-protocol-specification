@@ -2,7 +2,7 @@
 
 ![secret sharing image](./assets/secret.jpg)
 
-By when we talk about 'secret sharing' we are talking about mathematical algorithms which can be used to make distributed backups of a piece of data. By distributed we mean stored in multiple locations.
+When we talk about 'secret sharing' we are talking about mathematical algorithms which can be used to make distributed backups of a piece of data. By distributed we mean stored in multiple locations.
 
 These schemes are also known as threshold schemes, because they have the property that a particular threshold amount of shards are needed in order to recover the data.
 
@@ -12,7 +12,7 @@ Secret sharing schemes are nothing new.  They are usually attributed to Adi Sham
 
 ## How does it work?
 
-![3 polynomials of degree 2 through 2 points](3_polynomials_of_degree_2_through_2_points.svg)
+![3 polynomials of degree 2 through 2 points](./assets/3_polynomials_of_degree_2_through_2_points.svg)
 
 These schemes work using polynomial interpolation. To demonstrate the scheme we can imagine points on a curve as shown.  Actually these schemes use polynomials over a finite field which is difficult to represent in two dimensions, but the approximation can help us understand the concept.
 
