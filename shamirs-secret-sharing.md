@@ -16,7 +16,7 @@ Secret sharing schemes are nothing new.  They are usually attributed to Adi Sham
 
 These schemes work using polynomial interpolation. To demonstrate the scheme we can imagine points on a curve as shown.  Actually these schemes use polynomials over a finite field which is difficult to represent in two dimensions, but the approximation can help us understand the concept.
 
-The secret is a number.  Generally, the secret is a piece of data, which we might represent as a very large number, but for this example we'll take a small number. The secret number is the point where the curve crosses *x=0*.
+The secret is a number.  Generally, the secret is a piece of data, which we might represent as a very large number. The secret number is the point where the curve crosses *x=0*.
 
 The 'shards' are random points on the curve.  Suppose we have two shares, meaning we know two points the curve passes, as shown. With the type of curve shown, there are an infinite number of curves which pass through these two points. So even though we have two shares, the secret could be anything.  We dont even have a way to guess the secret and see if our guess was correct, so 'brute force' attacks are not possible.
 

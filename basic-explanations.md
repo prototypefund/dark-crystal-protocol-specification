@@ -6,6 +6,6 @@ This works using Shamir's secret sharing.  Here is a [simple explanation of secr
 
 # Custodian - what does it mean to look after a shard for someone.
 
-<name> would like you to look after a shard of their private key, and keep it safe. If something happens to their key (for example they loose their device), they may ask you to return this shard. It is important that you look after it, however, you are not the only person who has one, and if you do loose it, others may be able to help.
+*Name* would like you to look after a shard of their private key, and keep it safe. If something happens to their key (for example they loose their device), they may ask you to return this shard. It is important that you look after it, however, you are not the only person who has one, and if you do loose it, others may be able to help.
 
 This works using Shamir's secret sharing.  Here is a [simple explanation of secret sharing](./shamirs-secret-sharing.md)
