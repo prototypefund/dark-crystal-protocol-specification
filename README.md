@@ -46,7 +46,7 @@ The amount of information included here depends on how critical it is that share
 
 ![secret and label with key](./assets/dc_secret_label2.png)
 
-If the data to be backed up is larger than *maxbytes* bytes, the data is encrypted with a symmetric key and this key is taken to be the secret. Otherwise, the data itself is taken to be the secret. It needs to be noted that many implementations of secret sharing do this internally, and produce shares which are a concatonation of a key-share and the encrypted secret.
+If the data to be backed up is larger than 32 bytes, the data is encrypted with a symmetric key and this key is taken to be the secret. Otherwise, the data itself is taken to be the secret. It needs to be noted that many implementations of secret sharing do this internally, and produce shares which are a concatonation of a key-share and the encrypted secret.
 
 This means there is some duplication of data - a portion of each share is identical to the others. So in the case of particularly large secrets, it makes sense if the encrypted secret is stored only once in a place which is accessible to all share-holders (if the practicalities of the chosen transport layer make this possible).
 
@@ -64,7 +64,7 @@ It is assumed that in step 2, the symmetric encryption algorithm used will also 
 
 Shards are generated using a secure threshold-based secret sharing algorithm. 
 
-***TODO:*** link out to more information about Shamir's secret sharing and polynomial interpolation, for those interested
+If you are interested, here is an [explanation of secret sharing in very simple terms](./shamirs-secret-sharing)
 
 ### Step 5 - Shards are signed
 
